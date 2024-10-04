@@ -1,12 +1,15 @@
-{% include "header.html" %}  
+{% include 'header.html' %}
 
 <div class="container">
+  <section id="contact">
+    <form method="POST">
+      <h2>Contact Us</h2>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
 
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Include your contact information or a contact form.</p>
-    </section>
+  </section>
 </div>
 
-{% include "footer.html" %}  
+{% include 'footer.html' %}
