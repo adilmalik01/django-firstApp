@@ -1,5 +1,5 @@
 from django.db import models
-
+from django import forms
 # Create your models here.
 class Book(models.Model):
     authoName =  models.CharField(max_length=20)
@@ -19,3 +19,9 @@ class product(models.Model):
     
     def __str__(self):
         return self.productName
+    
+
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ['authoName', 'title', 'description']  # Include all fields you want to edit

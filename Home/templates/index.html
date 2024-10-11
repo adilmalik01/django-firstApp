@@ -54,12 +54,17 @@
   </section>
 
   {% for book in books %}
+  {% for book in books %}
     <div class="book">
-      <h2>{{ book.authoName }}</h2>
-      <h3>{{ book.title }}</h3>
-      <p class="description">{{ book.description }}</p>
+        <h2>{{ book.authoName }}</h2>
+        <h3>{{ book.title }}</h3>
+        <p class="description">{{ book.description }}</p>
+        <a href="{% url 'book_update' book.id %}">Edit</a>  <!-- Edit link -->
+        <a href="{% url 'book_delete' book.id %}">Delete</a>  <!-- Delete link -->
+        <a href="{% url 'book_detail' book.id %}"> See more  </a>
     </div>
-  {% endfor %}
+{% endfor %}
+{% endfor %}
 </div>
 
 {% include 'footer.html' %}
