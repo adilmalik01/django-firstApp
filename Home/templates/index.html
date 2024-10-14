@@ -53,17 +53,22 @@
     <p>This is the home section of your website. You can add a brief introduction here.</p>
   </section>
 
-  {% for book in books %}
-  {% for book in books %}
-    <div class="book">
-        <h2>{{ book.authoName }}</h2>
-        <h3>{{ book.title }}</h3>
-        <p class="description">{{ book.description }}</p>
-        <a href="{% url 'book_update' book.id %}">Edit</a>  <!-- Edit link -->
-        <a href="{% url 'book_delete' book.id %}">Delete</a>  <!-- Delete link -->
-        <a href="{% url 'book_detail' book.id %}"> See more  </a>
-    </div>
-{% endfor %}
+{% for book in books %}
+  <div class="book">
+    <h2>{{ book.authoName }}</h2>
+    <h3>{{ book.title }}</h3>
+
+    {% if book.image %}
+      <img src="{{ book.image.url }}" alt="{{ book.title }}" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+    {% else %}
+      <p>No image available.</p>
+    {% endif %}
+
+    <p class="description">{{ book.description }}</p>
+    <a href="{% url 'book_update' book.id %}">Edit</a>  
+    <a href="{% url 'book_delete' book.id %}">Delete</a>  
+    <a href="{% url 'book_detail' book.id %}">See more</a>
+  </div>
 {% endfor %}
 </div>
 

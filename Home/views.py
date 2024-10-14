@@ -22,18 +22,19 @@ def Service(request):
 @login_required
 def Contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)  # Include request.FILES to handle image uploads
         if form.is_valid():
-            form.save()
-            return redirect('/')  
+            form.save()  # Save the form along with the uploaded image
+            return redirect('/')  # Redirect after successful save
     else:
         form = ContactForm()
+
     return render(request, "contact.html", {'form': form})
 
 
 def signup(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(re  quest.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():    
             user = form.save() 
             login(request, user)  
@@ -66,10 +67,10 @@ def book_update(request, book_id):
     book = get_object_or_404(Book, id=book_id)
 
     if request.method == 'POST':
-        form = BookForm(request.POST, instance=book)
+        form = BookForm(request.POST, request.FILES, instance=book) 
         if form.is_valid():
             form.save()
-            return redirect('book_detail', book_id=book.id)  # Redirect to the book detail view after saving
+            return redirect('book_detail', book_id=book.id)
     else:
         form = BookForm(instance=book)
 

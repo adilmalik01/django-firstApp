@@ -112,6 +112,7 @@ LOGIN_URL = 'login/'  # Login page ka URL
 LOGIN_REDIRECT_URL = '/'  # Login ke baad user ko home page pe redirect karna
 LOGOUT_REDIRECT_URL = 'login/'  # Logout ke baad login page pe redirect karna
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -5,6 +5,8 @@ class Book(models.Model):
     authoName =  models.CharField(max_length=20)
     title =  models.TextField()
     description =  models.TextField()
+    image = models.ImageField(upload_to='book_images/', null=True, blank=True)  # New field for image
+
     
     
     def __str__(self):

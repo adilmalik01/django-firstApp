@@ -16,7 +16,7 @@ class UserRegistrationForm(forms.ModelForm):
 class ContactForm(forms.ModelForm):
        class Meta:
            model = Book
-           fields = ['title','authoName','description']
+           fields = ['title','authoName','description','image']
            
        
 

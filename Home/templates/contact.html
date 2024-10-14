@@ -1,15 +1,12 @@
 {% include 'header.html' %}
 
 <div class="container">
-  <section id="contact">
-    <form method="POST">
-      <h2>Contact Us</h2>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Submit</button>
-    </form>
-
-  </section>
+  <h2>Create a New Book</h2>
+  <form method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Book</button>
+  </form>
 </div>
 
 {% include 'footer.html' %}
